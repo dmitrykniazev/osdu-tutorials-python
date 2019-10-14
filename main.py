@@ -1,6 +1,6 @@
 from oic import rndstr
 from oic.oic import Client
-from oic.oic.message import ProviderConfigurationResponse
+from oic.oic.message import ProviderConfigurationResponse, AuthorizationResponse
 from oic.utils.authn.client import CLIENT_AUTHN_METHOD
 from oic.utils.http_util import Redirect
 
@@ -26,14 +26,16 @@ registration_response = client.register(provider_info["registration_endpoint"])
 # The response will also be stored in the client instance (registration_response attribute)
 # and some of the parameters will be unpacked and set as attributes on the client instance.
 
+session = {
+    "state": rndstr(),
+    "nonce": rndstr()
+}
+
+
 def sign_in():
     '''
         This handler initiates the sign-in process by redirecting to the provider authorization endpoint
     '''
-    session = {
-        "state": rndstr(),
-        "nonce": rndstr()
-    }
 
     args = {
         "client_id": client.client_id,
@@ -48,3 +50,20 @@ def sign_in():
     login_url = auth_req.request(client.authorization_endpoint)
 
     return Redirect(login_url)
+
+
+# Suppose, response - is a response_object
+response = "response_object"
+
+#  this handler validates the state, so it hasn't changed during the communication
+aresp = client.parse_response(AuthorizationResponse, info=response, sformat="urlencoded")
+code = aresp["code"]
+assert aresp["state"] == session["state"]
+
+args = {
+    "code": aresp["code"]
+}
+
+resp = client.do_access_token_request(state=aresp["state"],
+                                      request_args=args,
+                                      authn_method="client_secret_basic")
