@@ -5,6 +5,7 @@ cffi==1.12.3
 chardet==3.0.4
 cryptography==2.7
 defusedxml==0.6.0
+falcon==2.0.0
 future==0.18.0
 idna==2.8
 ioc==0.0.16
