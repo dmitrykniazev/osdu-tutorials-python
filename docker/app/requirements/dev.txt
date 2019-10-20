@@ -1,0 +1,4 @@
+-r prod.txt
+
+pylint==2.4.2
+ipython==7.8.0
