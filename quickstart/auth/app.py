@@ -41,10 +41,9 @@ class AuthResource:
         args = {
             'code': auth_response['code'],
         }
-
-        token_response = client.do_access_token_request(
+        client.do_access_token_request(
             state=auth_response['state'],
-            request_args=args,
+            request_args=args
         )
-
-        response.media = str(token_response.items())
+        user_info_response = client.do_user_info_request(state=auth_response['state'])
+        response.media = str(user_info_response)

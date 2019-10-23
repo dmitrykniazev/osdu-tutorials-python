@@ -2,12 +2,13 @@
 	"name": "Existing Docker Compose (Extend)",
 	"dockerComposeFile": [
 		"..\\docker-compose.yml",
-		"docker-compose.yml"
+		"docker-compose.yml",
+		"..\\docker-compose.override.yml"
 	],
 	"service": "app",
 	"workspaceFolder": "/workspace",
 	"settings": { 
 		"terminal.integrated.shell.linux": null
 	},
-	"extensions": []
+	"extensions": ["ms-python.python"]
 }
