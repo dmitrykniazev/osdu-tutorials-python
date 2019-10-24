@@ -10,5 +10,5 @@ docker-compose up --build
 # Starting server in VSCode Remote-containers env
 
 ```
-cd /workspace/quickstart && gunicorn entry_api:api -b 9000 --reload
+cd /workspace/quickstart && gunicorn entry_api:api -b :8080 --reload
 ```
