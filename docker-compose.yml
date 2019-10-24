@@ -12,8 +12,7 @@ services:
         ports:
             - '8080:8080'
         environment:
-            AUTH_META_ENDPOINT: "<meta endpoint>"
-            AUTH_ENDPOINT: "<auth endpoint>"
-            AUTH_TOKEN_ENDPOINT: "<auth token endpoint>"
+            OSDU_API_BASE_URL: "<base OSDU url>"
+            AUTH_BASE_URL: "<base url>"
             AUTH_CLIENT_ID: "<client id>"
             AUTH_CLIENT_SECRET: "<client secret>"
