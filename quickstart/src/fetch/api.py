@@ -6,7 +6,7 @@ import requests
 from azure.storage.blob.baseblobservice import BaseBlobService
 from falcon import Request, Response, HTTP_BAD_REQUEST
 
-from settings import OSDU_API_BASE_URL
+from settings import API_BASE_URL
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +56,7 @@ class FetchResource:
             'TargetRegionId': '',
         }
 
-        fetch_result = requests.post('%s/GetResources' % OSDU_API_BASE_URL, json=fetch_request_body)
+        fetch_result = requests.post('%s/GetResources' % API_BASE_URL, json=fetch_request_body)
 
         data = self.get_file_url(fetch_result.json())
         if data is None:

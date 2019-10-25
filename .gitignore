@@ -3,6 +3,9 @@
 .devcontainer
 .venv
 
+# custom config files
+config-*.env
+
 __pycache__
 
 docker-compose.override.yml

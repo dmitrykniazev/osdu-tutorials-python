@@ -1,0 +1,10 @@
+ 
+version : '3'
+services:
+  backend:
+    env_file:
+      - config-azure.env
+    build: .
+    ports:
+      - "8080:8080"
+    command: "gunicorn entry_api:api -b 0.0.0.0:8080"

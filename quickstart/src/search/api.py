@@ -3,7 +3,7 @@ from typing import Dict, Any, List
 import requests
 from falcon import Request, Response
 
-from settings import OSDU_API_BASE_URL
+from settings import API_BASE_URL
 
 
 class SearchResource:
@@ -36,5 +36,5 @@ class SearchResource:
             ]
         }
 
-        search_result = requests.request('post', '%s/indexSearch' % OSDU_API_BASE_URL, json=search_request_data)
+        search_result = requests.request('post', '%s/indexSearch' % API_BASE_URL, json=search_request_data)
         response.media = self.get_response_from_search_result(search_result.json().get('results', []))
