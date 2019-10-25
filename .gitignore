@@ -1,5 +1,7 @@
 .vscode
 .idea
+.devcontainer
+.venv
 
 __pycache__
 
