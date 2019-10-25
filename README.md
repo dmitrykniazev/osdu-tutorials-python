@@ -40,8 +40,9 @@ For AWS
 ```
 $ export $(grep -v '^#' config-aws.env | xargs -d '\n')
 ```
-5. Run the server:
+5. Run the server in quickstart/src folder:
 ```
+$ cd src
 $ gunicorn entry_api:api -b 0.0.0.0:8080
 ```
 6. Go to http://localhost:8080
