@@ -6,7 +6,7 @@ from falcon import Request, Response
 from settings import OSDU_API_BASE_URL
 
 
-class SearchResource:
+class FindResource:
 
     def get_response_from_search_result(self, search_result: List[Dict]) -> Dict[str, Any]:
         result = {}
