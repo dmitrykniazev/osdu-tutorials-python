@@ -63,4 +63,4 @@ class FetchResource:
             response.status = HTTP_BAD_REQUEST
             return
 
-        response.media = self.get_blob_data(data)
+        response.body = self.get_blob_data(data)
