@@ -41,9 +41,13 @@ class AuthResource:
         args = {
             'code': auth_response['code'],
         }
-        client.do_access_token_request(
+        access_token_response = client.do_access_token_request(
             state=auth_response['state'],
             request_args=args
         )
-        user_info_response = client.do_user_info_request(state=auth_response['state'])
-        response.media = str(user_info_response)
+        user_info = client.do_user_info_request(state=auth_response['state'])
+        response.media = {
+            'id_token': access_token_response.raw_id_token,
+            'access_token': access_token_response.get('access_token'),
+            'user_info': dict(user_info.items())
+        }
