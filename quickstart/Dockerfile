@@ -12,4 +12,4 @@ COPY src/ ./
 
 EXPOSE 8080
 
-CMD gunicorn entry_api:api -b 0.0.0.0:8080
+CMD gunicorn entry_api:api -b :8080 --reload
