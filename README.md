@@ -18,7 +18,7 @@ OSDU_AUTH_BASE_URL=<auth-server-url>
 OSDU_API_BASE_URL=<api-base-url>
 ```
 
-## How to run locally in WSL/Linux
+## How to run locally on Windows Subsystem for Linux (WSL)/Linux
 
 1. Download and install Python.
 2. Create and activate virtual environment:
@@ -30,7 +30,11 @@ $ source .venv/quickstart/bin/activate
 ```
 $ pip install -r requirements.txt
 ```
-4. Export environment variables:
+4. If your version of Python3 is 3.6 or less, install one more package:
+```
+$ pip install dataclasses
+```
+5. Export environment variables:
 
 For Azure
 ```
@@ -40,12 +44,12 @@ For AWS
 ```
 $ export $(grep -v '^#' config-aws.env | xargs -d '\n')
 ```
-5. Run the server in quickstart/src folder:
+6. Run the server in quickstart/src folder:
 ```
 $ cd src
 $ gunicorn entry_api:api -b 0.0.0.0:8080
 ```
-6. Go to http://localhost:8080
+7. Go to http://localhost:8080
 
 ## How to run inside Docker container
 
